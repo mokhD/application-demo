@@ -1,0 +1,28 @@
+name: Build & Deploy demo app
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    name: Build & Deploy demo app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup jdk 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version : 11
+
+      - name: Unit tests
+        run: mvn -B test --file pom.xml
+
+      - name: Build the app
+        run: |
+          mvn clean
+          mvn -B package --file pom.xml
