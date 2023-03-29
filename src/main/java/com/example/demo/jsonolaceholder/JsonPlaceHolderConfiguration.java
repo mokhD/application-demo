@@ -10,6 +10,7 @@ public class JsonPlaceHolderConfiguration {
     @Bean("jsonplaceholder")
     CommandLineRunner runner(JSONPlaceHolderClient jsonPlaceHolderClient){
         return args -> {
+
            /* System.out.println("https://jsonplaceholder.typicode.com/posts");
             System.out.println(jsonPlaceHolderClient.getPosts().size());
             System.out.println("https://jsonplaceholder.typicode.com/post/1");
